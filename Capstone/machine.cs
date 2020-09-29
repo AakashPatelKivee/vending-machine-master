@@ -26,7 +26,8 @@ namespace Capstone
         }
         public void DisplayCurrentItem()
         {
-            Console.WriteLine($"\n\n{"#".PadRight(5)} {"Stock"} { "Product".PadRight(47) } { "Price".PadLeft(7)}");
+            Console.WriteLine("Press any key to move back");
+            Console.WriteLine($"\n\n{"#".PadRight(5)} {"Stock"} { "Product".PadRight(47)} { "Price".PadLeft(7)}");
             foreach (KeyValuePair<string, VendingItem> kvp in this.Items)
             {
                 if (kvp.Value.ItemsRemaining > 0)

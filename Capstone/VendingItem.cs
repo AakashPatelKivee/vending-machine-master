@@ -41,8 +41,6 @@
             this.ProductName = productName;
             this.Price = price;
             this.ItemsRemaining = itemsRemaining;
-            
-          
             this.MessageWhenVended = messageWhenVended;
             this.MessageWhenSoldOut = $"Sold out of {this.ProductName}!\nBuy something else!";
         }

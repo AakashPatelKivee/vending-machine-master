@@ -9,15 +9,20 @@ namespace Capstone
         //public int quantity { get; set; }
         public void totalamount()
         {
-            
-            int mult, price, itemsRemaining;
-            Console.WriteLine("Enter Value of price and itemsRemaining\n");
-            price = Convert.ToInt32(Console.ReadLine());
-            itemsRemaining = Convert.ToInt32(Console.ReadLine());
-
-            mult = price * itemsRemaining;
-            Console.WriteLine("The Multiplication of {0} and {1} = {2}\n", price, itemsRemaining, mult);
-
+            decimal Qut;
+            decimal Total;
+            decimal mult, price;
+           // decimal itemsRemaining;
+            Console.WriteLine("Enter Quantity");
+            Qut = Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine("Enter price");
+            //Console.WriteLine("Enter Value of price\n");
+            price = Convert.ToDecimal(Console.ReadLine());
+            //itemsRemaining = Convert.ToDecimal(Console.ReadLine());
+            mult = Qut * price;
+            Console.WriteLine("The Multiplication of {0} and {1} = {2}\n", price, Qut, mult);
+            Total = mult;
+            Console.WriteLine("The Total is ", Total);
         }
     }
 }

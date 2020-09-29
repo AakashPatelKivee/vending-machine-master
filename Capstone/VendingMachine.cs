@@ -2,19 +2,18 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates;
     using System.Text;
 
-    public class VendingMachine
+    public class VendingMachine 
     {
         private Logger Log = new Logger();
         public Dictionary<string, VendingItem> VendingMachineItems = new Dictionary<string, VendingItem>();
         public Dictionary<string, VendingItem> Items = new Dictionary<string, VendingItem>();
         FileHandler HandleFiles = new FileHandler();
         FileHandler handler = new FileHandler();
-        
-        public Money Money { get; }
-       
-        public string NotEnoughMoneyError = "Not enough money in the machine to complete the transaction.";
+         public Money Money { get; }
+         public string NotEnoughMoneyError = "Not enough money in the machine to complete the transaction.";
         public string MessageToUser;
 
         public VendingMachine()
@@ -23,12 +22,7 @@
             //this.Items = this.HandleFiles.GetItems();
 
             this.Money = new Money(this.Log);
-            
-
         }
-        
-       
-
 
         public decimal MoneyInMachine
         {
@@ -37,11 +31,11 @@
                 return this.Money.MoneyInMachine;
             }
         }
-        
 
         public void DisplayAllItems()
         {
-            Console.WriteLine($"\n\n{"#".PadRight(5)} {"Stock"} { "Product".PadRight(47) } { "Price".PadLeft(7)}");
+            Console.WriteLine("Press any key to move back");
+            Console.WriteLine($"\n\n{"#".PadRight(5)} {"Stock"} { "Product".PadRight(47)} {"Price".PadLeft(7)}");
             foreach (KeyValuePair<string, VendingItem> kvp in this.VendingMachineItems)
             {
                 if (kvp.Value.ItemsRemaining > 0)
@@ -59,7 +53,6 @@
             }
         }
 
-        
         public bool ItemExists(string itemNumber)
         {
             return this.VendingMachineItems.ContainsKey(itemNumber);
@@ -74,6 +67,7 @@
                     && this.Money.MoneyInMachine >= this.VendingMachineItems[itemNumber].Price
                     && this.VendingMachineItems[itemNumber].ItemsRemaining > 0
                     && this.VendingMachineItems[itemNumber].RemoveItem())
+
                 {
                     // Logging message "CANDYBARNAME A1"
                     string message = $"{this.VendingMachineItems[itemNumber].ProductName.ToUpper()} {itemNumber}";
@@ -97,25 +91,29 @@
                     return false;
                 }
         }
+
         public void totalamount()
         {
             try
-            {
-                decimal mult, price, itemsRemaining;
-                Console.WriteLine("Enter Value of price and itemsRemaining\n");
-                price = Convert.ToDecimal(Console.ReadLine());
+                {
+                decimal Qut;
+                decimal Total;
+                decimal mult, price;
+                decimal itemsRemaining;
+                Console.WriteLine("Enter Quantity");
+                Qut = Convert.ToDecimal(Console.ReadLine());
+                //Console.WriteLine("Enter price");
+                //Console.WriteLine("Enter Value of price\n");
+                //price = Convert.ToDecimal(Console.ReadLine());
                 itemsRemaining = Convert.ToDecimal(Console.ReadLine());
-
-                mult = price * itemsRemaining;
-                Console.WriteLine("The Multiplication of {0} and {1} = {2}\n", price, itemsRemaining, mult);
+                mult = Qut * itemsRemaining;
+                Console.WriteLine("The Total is this  {0} * {1} = {2}\n", itemsRemaining, Qut, mult);
             }
-            catch(Exception ex)
-            {
-                throw ex;
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            
-
-        }
 
     }
 }

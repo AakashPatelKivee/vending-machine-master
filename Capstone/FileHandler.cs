@@ -150,8 +150,9 @@
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
+                    Console.WriteLine(ex);
                     Console.WriteLine("Error trying to open the input file.");
                 }
             }
